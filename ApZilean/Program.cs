@@ -145,12 +145,15 @@ namespace ApZilean
             var autoqValue = MiscMenu["autoq"].Cast<Slider>().CurrentValue;
             var doubleQValue = MiscMenu["bombtomouse"].Cast<KeyBind>().CurrentValue;
 
-            if (doubleQValue && Q.IsReady() && W.IsReady())
+            if (doubleQValue && W.IsReady())
             {
                 var pos = Game.CursorPos;
                 Q.Cast(pos);
+                if (!Q.IsReady())
+                {
                 W.Cast();
                 Q.Cast(pos);
+                }
             }
 
             if (autoUltValue != 0 && R.IsReady() && R.ManaCost <= Zilean.Mana)
